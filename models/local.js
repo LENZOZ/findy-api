@@ -11,7 +11,9 @@ module.exports = (sequalize, type) => {
         rut: type.STRING,
         ubicacion:type.STRING,
         cantidad_mesas:type.INTEGER,
-        ruta_imagen:type.STRING
+        ruta_imagen:type.STRING,
+        lat:type.DOUBLE,
+        ing: type.DOUBLE
 
     },{
         freezeTableName: true
