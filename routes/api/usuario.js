@@ -4,7 +4,8 @@ const {check, validationResult } = require('express-validator');
 const moment = require('moment');
 const jwt = require('jwt-simple');
 
-const {Usuario} = require('../../db');
+const {Usuario, Administrador} = require('../../db');
+const administrador = require('../../models/administrador');
 
 
 router.post('/registro',[
@@ -37,5 +38,21 @@ router.post('/login', async (req,res) => {
  }
 });
 
+router.post('/loginA', async (req,res) => {
+    let usuario = await Usuario.findOne({where: {correo: req.body.correo} });
+    const id = usuario.id_usuario;
+    const credencial= await Administrador.findOne({where:{Usuario_idUsuario:id}});
+    if (credencial){
+       const iguales = bcrypt.compareSync(req.body.contrasenna, usuario.contrasenna);
+       if(iguales){
+           res.send(credencial);
+           
+       }else{
+           res.json({error: 'Error en usuario y/o contraseña'});
+       }
+    }else{
+        res.json({error: 'Error en usuario y/o contraseña'});
+    }
+   });
 
 module.exports = router;

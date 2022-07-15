@@ -1,12 +1,16 @@
 const Sequelize = require('sequelize');
-
+/** @type {*} */
 const UsuarioModel = require('./models/usuario');
 const LocalModel = require('./models/local');
 const ProductoModel = require('./models/producto');
 const PromocionModel = require('./models/promocion');
 const EstadoModel = require('./models/estado');
 const MesaModel = require('./models/mesa');
+const CaracteristicaModel = require('./models/caracteristica');
+const ReservaModel = require('./models/reserva');
+const AdministradorModel = require('./models/administrador');
 
+/** @type {*} */
 const sequelize = new Sequelize('cfi82355_findy','cfi82355_cfi82355','FUJnGvZMwLzUqXAYqnUB',{
     host:'findy.cl',
     dialect: 'mysql'
@@ -18,6 +22,9 @@ const Producto = ProductoModel(sequelize, Sequelize);
 const Promocion = PromocionModel(sequelize, Sequelize);
 const Estado = EstadoModel(sequelize, Sequelize);
 const Mesa = MesaModel(sequelize, Sequelize);
+const Caracteristica = CaracteristicaModel(sequelize, Sequelize);
+const Reserva = ReservaModel(sequelize, Sequelize);
+const Administrador = AdministradorModel(sequelize, Sequelize);
 
 sequelize.sync({force: false}).then(()=>{
     console.log('tablas sincronizadas')
@@ -36,12 +43,14 @@ Mesa.belongsTo(Estado, {foreignKey: "Estado_id_Estado"});
 Estado.hasMany(Mesa,{foreignKey: "Estado_id_Estado"});
 
 
-
 module.exports = {
     Usuario,
     Local,
     Producto,
     Promocion,
     Estado,
-    Mesa
+    Mesa,
+    Caracteristica,
+    Reserva,
+    Administrador
 }
