@@ -13,6 +13,7 @@ module.exports = (sequalize, type) => {
         hora_inicio:type.DATE,
         hora_termino:type.DATE,
         ruta_imagen:type.STRING,
+        estado:type.INTEGER
     },{
         freezeTableName: true
     });

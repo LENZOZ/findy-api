@@ -12,6 +12,7 @@ module.exports = (sequalize, type) => {
         ubicacion:type.STRING,
         cantidad_mesas:type.INTEGER,
         ruta_imagen:type.STRING,
+        ruta_carta:type.STRING,
         lat:type.DOUBLE,
         ing: type.DOUBLE
 

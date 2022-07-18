@@ -9,6 +9,7 @@ const MesaModel = require('./models/mesa');
 const CaracteristicaModel = require('./models/caracteristica');
 const ReservaModel = require('./models/reserva');
 const AdministradorModel = require('./models/administrador');
+const PersonalModel = require('./models/personal');
 
 /** @type {*} */
 const sequelize = new Sequelize('cfi82355_findy','cfi82355_cfi82355','FUJnGvZMwLzUqXAYqnUB',{
@@ -25,6 +26,7 @@ const Mesa = MesaModel(sequelize, Sequelize);
 const Caracteristica = CaracteristicaModel(sequelize, Sequelize);
 const Reserva = ReservaModel(sequelize, Sequelize);
 const Administrador = AdministradorModel(sequelize, Sequelize);
+const Personal = PersonalModel(sequelize, Sequelize);
 
 sequelize.sync({force: false}).then(()=>{
     console.log('tablas sincronizadas')
@@ -52,5 +54,6 @@ module.exports = {
     Mesa,
     Caracteristica,
     Reserva,
-    Administrador
+    Administrador,
+    Personal
 }

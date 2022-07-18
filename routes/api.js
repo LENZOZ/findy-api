@@ -7,7 +7,8 @@ const apiPromocionRouter = require('./api/promocion');
 const apiEstadoRouter = require('./api/estado');
 const apiMesaRouter = require('./api/mesa');
 const apiCaracteristicaRouter = require('./api/caracteristica');
-const apiReservaRouter = require('./api/reserva')
+const apiReservaRouter = require('./api/reserva');
+const apiPersonalRouter = require('./api/personal')
 
 router.use('/usuario', apiUsuarioRouter);
 
@@ -24,6 +25,8 @@ router.use('/mesa', apiMesaRouter);
 router.use('/caracteristica', apiCaracteristicaRouter);
 
 router.use('/reserva', apiReservaRouter);
+
+router.use('/personal', apiPersonalRouter);
 
 
 module.exports = router;
